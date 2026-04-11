@@ -1,0 +1,603 @@
+/* Ionic Variables and Theming. For more info, please see:
+http://ionicframework.com/docs/theming/ */
+
+/** Ionic CSS Variables **/
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../../../public/assets/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../../../public/assets/fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: bold;
+}
+
+:root {
+  /* Set the font family of the entire app */
+  --ion-font-family: 'Roboto' !important;
+
+  /* Help Modal Background color */
+  --ion-color-helpModalBg: #002c54;
+
+  /**primary**/
+  --ion-color-primary: #4faee0;
+  --ion-color-primary-rgb: 79, 174, 224;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #4faee0;
+  --ion-color-primary-tint: #4faee0;
+
+  /** secondary **/
+  --ion-color-secondary: #45c8b5;
+  --ion-color-secondary-rgb: 69, 200, 181;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #45c8b5;
+  --ion-color-secondary-tint: #45c8b5;
+
+  /** tertiary **/
+  --ion-color-tertiary: #002c54;
+  --ion-color-tertiary-rgb: 0, 44, 84;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #002c54;
+  --ion-color-tertiary-tint: #002c54;
+
+  /** success **/
+  --ion-color-success: #a0c167;
+  --ion-color-success-rgb: 160, 193, 103;
+  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast-rgb: 0, 0, 0;
+  --ion-color-success-shade: #a0c167;
+  --ion-color-success-tint: #a0c167;
+
+  /** warning **/
+  --ion-color-warning: #f4da7f;
+  --ion-color-warning-rgb: 244, 218, 127;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #f4da7f;
+  --ion-color-warning-tint: #f4da7f;
+
+  /* error status color */
+  --ion-color-error: #e88949;
+  --ion-color-error-rgb: 232, 137, 73;
+  --ion-color-error-contrast: #000000;
+  --ion-color-error-contrast-rgb: 0, 0, 0;
+  --ion-color-error-shade: #e88949;
+  --ion-color-error-tint: #e88949;
+
+  /** danger **/
+  --ion-color-danger: #d73c23;
+  --ion-color-danger-rgb: 215, 60, 35;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d73c23;
+  --ion-color-danger-tint: #d73c23;
+
+  /** dark  #434a54 - primary text color**/
+  --ion-color-gray: #434a54;
+  --ion-color-gray-rgb: 64, 74, 84;
+  --ion-color-gray-contrast: #ffffff;
+
+  --ion-color-gray-shade: #434a54;
+  --ion-color-gray-tint: #434a54;
+
+  /* lighter text color -#656d78 subtitle */
+  --ion-color-gray500: #656d78;
+  --ion-color-gray500-rgb: 101, 109, 120;
+  --ion-color-gray500-contrast: #ffffff;
+  --ion-color-gray500-contrast-rgb: 255, 255, 255;
+  --ion-color-gray500-shade: #656d78;
+  --ion-color-gray500-tint: #656d78;
+
+  /** medium  now gray 400**/
+  --ion-color-gray400: #aab2bd;
+  --ion-color-gray400-rgb: 170, 178, 189;
+  --ion-color-gray400-contrast: #000000;
+  --ion-color-gray400-contrast-rgb: 0, 0, 0;
+  --ion-color-gray400-shade: #aab2bd;
+  --ion-color-gray400-tint: #aab2bd;
+
+  /* define later */
+  --ion-color-gray300: #ccd1d9;
+  --ion-color-gray300-rgb: 204, 209, 217;
+  --ion-color-gray300-contrast: #000000;
+  --ion-color-gray300-contrast-rgb: 0, 0, 0;
+  --ion-color-gray300-shade: #ccd1d9;
+  --ion-color-gray300-tint: #ccd1d9;
+
+  /* lighter text color - example subtitle  */
+  --ion-color-gray200: #e6e9ed;
+  --ion-color-gray200-rgb: 230, 233, 237;
+  --ion-color-gray200-contrast: #000000;
+  --ion-color-gray200-contrast-rgb: 0, 0, 0;
+  --ion-color-gray200-shade: #e6e9ed;
+  --ion-color-gray200-tint: #e6e9ed;
+
+  /** was light now gray100 - #f5f5fa devider lines**/
+  --ion-color-gray100: #f5f5fa;
+  --ion-color-gray100-rgb: 245, 247, 250;
+  --ion-color-gray100-contrast: #000000;
+  --ion-color-gray100-contrast-rgb: 0, 0, 0;
+  --ion-color-gray100-shade: #f5f5fa;
+  --ion-color-gray100-tint: #f5f5fa;
+
+  /* background */
+  --ion-color-background: #e6e9ed;
+  --ion-color-background-rgb: 230, 233, 237;
+  --ion-color-background-contrast: #000000;
+  --ion-color-background-contrast-rgb: 0, 0, 0;
+  --ion-color-background-shade: #e6e9ed;
+  --ion-color-background-tint: #e6e9ed;
+
+  /* tabs background */
+  --ion-color-tabs: #ffffff;
+  --ion-color-tabs-rgb: 230, 233, 237;
+  --ion-color-tabs-contrast: #000000;
+  --ion-color-tabs-contrast-rgb: 0, 0, 0;
+  --ion-color-tabs-shade: #ffffff;
+  --ion-color-tabs-tint: #ffffff;
+
+  /* quick install help background */
+  --ion-color-quickInstallBackground: #ffffff;
+  --ion-color-quickInstallBackground-rgb: 230, 233, 237;
+  --ion-color-quickInstallBackground-contrast: #000000;
+  --ion-color-quickInstallBackground-contrast-rgb: 0, 0, 0;
+  --ion-color-quickInstallBackground-shade: #e6e9ed;
+  --ion-color-quickInstallBackground-tint: #e6e9ed;
+
+  /* card */
+  --ion-color-card: #ffffff;
+  --ion-color-card-rgb: 230, 233, 237;
+  --ion-color-card-contrast: #000000;
+  --ion-color-card-contrast-rgb: 0, 0, 0;
+  --ion-color-card-shade: #ffffff;
+  --ion-color-card-tint: #ffffff;
+
+  /* CEL-FI colors */
+  --cel-fi-green: #a0c167;
+
+  /* button disabled background */
+  --ion-color-disabledButton: #ccd1d9;
+
+  /* button disabled text */
+  --ion-color-disabledButtonText: #f5f5fa;
+
+  /* Divider color */
+  --ion-color-dividerColor: var(--ion-color-gray100);
+
+  /* Progress bar background color */
+  --ion-color-progressBarBackground: #f5f5fa;
+
+  /* TextField Dropdown Menu background color */
+  --ion-color-textfieldDropdown: #f5f5fa;
+
+  /* TextField Dropdown Menu background color */
+  --ion-color-dropdownText: #434a54;
+
+  /* TextField Dropdown Box Shadow */
+  --ion-color-dropdownShadow: rgba(163, 163, 163, 0.74);
+}
+
+.rotatedImg {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(-180deg);
+}
+
+ion-button {
+  text-transform: none;
+  max-width: 250px;
+}
+
+.horizontalCenterContent {
+  display: flex;
+  justify-content: center;
+}
+
+.alignContentEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.verticalHorizontalCenterContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.centerContentContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: none;
+}
+
+.normal-button {
+  background-color: var(--ion-color-primary);
+  font-size: small;
+  height: 50px;
+  width: 130px;
+}
+
+.alert-button {
+  background-color: transparent !important;
+  font-size: small;
+  height: 50px;
+  width: 130px;
+  box-shadow: 0;
+  color: var(--ion-color-primary) !important;
+  border-width: 2px !important;
+  border-color: var(--ion-color-primary) !important;
+}
+
+.normal-button:disabled,
+.normal-button[disabled] {
+  background-color: var(--ion-color-disabledButton) !important;
+  color: var(--ion-color-disabledButtonText) !important;
+  box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0, 1);
+}
+
+.normal-button-stretched-transparent {
+  color: var(--ion-color-primary) !important;
+  background-color: transparent !important;
+  font-size: smaller !important;
+  height: 50px;
+  width: 220px;
+}
+
+.normal-button-stretched-transparent-outline {
+  color: var(--ion-color-primary) !important;
+  background-color: transparent !important;
+  font-size: smaller !important;
+  height: 50px;
+  width: 220px;
+  border: 1px solid var(--ion-color-primary) !important;
+}
+
+.normal-button-stretched {
+  background-color: var(--ion-color-primary);
+  font-size: smaller !important;
+  height: 50px;
+  width: 220px;
+}
+
+.tabsPaperLayout {
+  position: fixed;
+  width: 100%;
+  height: 90px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+ion-text {
+  font-size: medium;
+  line-height: normal;
+}
+
+ion-footer {
+  overflow: hidden;
+  box-shadow: none;
+}
+
+/* Remove bottom border on ios */
+.header-ios ion-toolbar:last-child {
+  --border-width: 0;
+}
+
+.header-md::after {
+  display: none;
+}
+
+ion-content {
+  background-color: var(--ion-color-background);
+  --background: transparent !important;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  --border-style: none;
+  padding-bottom: 0;
+}
+
+ion-item-group {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+ion-card {
+  background-color: var(--ion-color-card);
+  border-radius: 10px;
+  box-shadow: none;
+  line-height: 1.5;
+  padding: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin: 0;
+  margin-bottom: 16px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.tableCard {
+  background-color: var(--ion-color-card);
+  border-radius: 10px;
+  box-shadow: none;
+  line-height: 1.5;
+  padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 6px;
+  margin: 0;
+  margin-bottom: 16px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+ion-title {
+  font-weight: bold;
+  font-size: medium;
+}
+
+ion-item {
+  --background: transparent;
+  border-width: 0;
+  --inner-border-width: 0;
+  --detail-icon-opacity: 1;
+  --inner-padding-end: 8px;
+  --padding-start: 8px;
+}
+
+ion-item ion-icon {
+  margin: 0;
+  margin-right: 8px;
+}
+
+ion-fab {
+  position: fixed;
+}
+
+ion-popover {
+  --width: unset !important;
+  --background: var(--ion-color-card);
+  --box-shadow: -5px 19px 48px -16px var(--ion-color-gray400);
+}
+
+/* keeps the popover from offseting on the x-axis */
+ion-popover::part(content) {
+  right: 5px;
+  left: 5px;
+}
+
+.overlayCardContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ion-color-primary);
+}
+.overlayCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+  padding: 30px 15px 0px 15px;
+  border-radius: 20px 20px 0 0;
+}
+
+ion-card-subtitle {
+  color: var(--ion-color-gray500);
+  padding: 4px;
+}
+
+.startUpPageContainer {
+  background-image: url('../../view/images/other/wave_background.png');
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.deviceIcon {
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+  height: 45%;
+  margin: auto;
+}
+
+/* quick install help background */
+.ion-color-quickInstallBackground {
+  --ion-color-base: var(--ion-color-quickInstallBackground);
+  --ion-color-base-rgb: var(--ion-color-quickInstallBackground-rgb);
+  --ion-color-contrast: var(--ion-color-quickInstallBackground-contrast);
+  --ion-color-contrast-rgb: var(
+    --ion-color-quickInstallBackground-contrast-rgb
+  );
+  --ion-color-shade: var(--ion-color-quickInstallBackground-shade);
+  --ion-color-tint: var(--ion-color-quickInstallBackground-tint);
+}
+
+.ion-color-error {
+  --ion-color-base: var(--ion-color-error);
+  --ion-color-base-rgb: var(--ion-color-error-rgb);
+  --ion-color-contrast: var(--ion-color-error-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-error-contrast-rgb);
+  --ion-color-shade: var(--ion-color-error-shade);
+  --ion-color-tint: var(--ion-color-error-tint);
+}
+
+/* formally dark - primary text color*/
+.ion-color-gray {
+  --ion-color-base: var(--ion-color-gray);
+  --ion-color-gray-rgb: var(--ion-color-gray-rgb);
+  --ion-color-contrast: var(--ion-color-gray-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gray-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gray-shade);
+  --ion-color-tint: var(--ion-color-gray-tint);
+}
+
+/* lighter text color - subtitle */
+.ion-color-gray500 {
+  --ion-color-base: var(--ion-color-gray500);
+  --ion-color-gray500-rgb: var(--ion-color-gray500-rgb);
+  --ion-color-contrast: var(--ion-color-gray500-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gray500-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gray500-shade);
+  --ion-color-tint: var(--ion-color-gray500-tint);
+}
+
+/** medium  now gray 400**/
+.ion-color-gray400 {
+  --ion-color-base: var(--ion-color-gray400);
+  --ion-color-gray400-rgb: var(--ion-color-gray400-rgb);
+  --ion-color-contrast: var(--ion-color-gray400-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gray400-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gray400-shade);
+  --ion-color-tint: var(--ion-color-gray400-tint);
+}
+
+/* define later gray300 */
+
+.ion-color-gray300 {
+  --ion-color-base: var(--ion-color-gray300);
+  --ion-color-gray300-rgb: var(--ion-color-gray300-rgb);
+  --ion-color-contrast: var(--ion-color-gray300-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gray300-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gray300-shade);
+  --ion-color-tint: var(--ion-color-gray300-tint);
+}
+
+/* lighter text color - example subtitle - background */
+.ion-color-gray200 {
+  --ion-color-base: var(--ion-color-gray200);
+  --ion-color-gray200-rgb: var(--ion-color-gray200-rgb);
+  --ion-color-contrast: var(--ion-color-gray200-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gray200-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gray200-shade);
+  --ion-color-tint: var(--ion-color-gray200-tint);
+}
+
+/** was light now gray100 - devider lines**/
+
+.ion-color-gray100 {
+  --ion-color-base: var(--ion-color-gray100);
+  --ion-color-gray100-rgb: var(--ion-color-gray100-rgb);
+  --ion-color-contrast: var(--ion-color-gray100-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gray100-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gray100-shade);
+  --ion-color-tint: var(--ion-color-gray100-tint);
+}
+
+.ion-color-helpModalBg {
+  --ion-color-base: var(--ion-color-helpModalBg);
+}
+
+.md .menu-content-push {
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode variables go here */
+
+    /* background */
+    --ion-color-background: #181818;
+
+    /* tabs background */
+    --ion-color-tabs: #292f37;
+    --ion-color-tabs-rgb: 0, 0, 0;
+    --ion-color-tabs-contrast: #ffffff;
+    --ion-color-tabs-contrast-rgb: 255, 255, 255;
+    --ion-color-tabs-shade: #292f37;
+    --ion-color-tabs-tint: #292f37;
+
+    /* card */
+    --ion-color-card: #292f37;
+    --ion-color-card-rgb: 41, 47, 55;
+    --ion-color-card-contrast: #ffffff;
+    --ion-color-card-contrast-rgb: 0, 0, 0;
+    --ion-color-card-shade: #292f37;
+    --ion-color-card-tint: #292f37;
+
+    /** dark  #434a54 **/
+    --ion-color-gray: #f5f5fa;
+
+    /* Divider color */
+    --ion-color-dividerColor: #434a54;
+
+    /* Progress bar background color */
+    --ion-color-progressBarBackground: #434a54;
+
+    /* button disabled background */
+    --ion-color-disabledButton: #434a54;
+
+    /* button disabled text */
+    --ion-color-disabledButtonText: #f5f5fa;
+
+    /* TextField Dropdown Menu background color */
+    --ion-color-textfieldDropdown: #656d78;
+
+    /* TextField Dropdown Menu background color */
+    --ion-color-dropdownText: #f5f5fa;
+
+    /* TextField Dropdown Box Shadow */
+    --ion-color-dropdownShadow: transparent;
+
+    /* lighter text color -#656d78 subtitle */
+    --ion-color-gray500: #ccd1d9;
+    --ion-color-gray500-rgb: 101, 109, 120;
+    --ion-color-gray500-contrast: #ffffff;
+    --ion-color-gray500-contrast-rgb: 255, 255, 255;
+    --ion-color-gray500-shade: #656d78;
+    --ion-color-gray500-tint: #656d78;
+
+    /** medium  now gray 400**/
+    --ion-color-gray400: #ccd1d9;
+
+    /** medium  now gray 400**/
+    --ion-color-gray400: #aab2bd;
+    --ion-color-gray400-rgb: 170, 178, 189;
+    --ion-color-gray400-contrast: #000000;
+    --ion-color-gray400-contrast-rgb: 0, 0, 0;
+    --ion-color-gray400-shade: #aab2bd;
+    --ion-color-gray400-tint: #aab2bd;
+
+    /* define later */
+    --ion-color-gray300: #ccd1d9;
+    --ion-color-gray300-rgb: 204, 209, 217;
+    --ion-color-gray300-contrast: #000000;
+    --ion-color-gray300-contrast-rgb: 0, 0, 0;
+    --ion-color-gray300-shade: #ccd1d9;
+    --ion-color-gray300-tint: #ccd1d9;
+
+    /* lighter text color - example subtitle - background */
+    --ion-color-gray200: #000000;
+    --ion-color-gray200-rgb: 230, 233, 237;
+    --ion-color-gray200-contrast: #000000;
+    --ion-color-gray200-contrast-rgb: 0, 0, 0;
+    --ion-color-gray200-shade: #e6e9ed;
+    --ion-color-gray200-tint: #e6e9ed;
+
+    /** was light now gray100 - #f5f5fa devider lines**/
+    --ion-color-gray100: #f5f5fa;
+    --ion-color-gray100-rgb: 245, 247, 250;
+    --ion-color-gray100-contrast: #000000;
+    --ion-color-gray100-contrast-rgb: 0, 0, 0;
+    --ion-color-gray100-shade: #d8d9dc;
+    --ion-color-gray100-tint: #f6f8fb;
+
+  }
+}
