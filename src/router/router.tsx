@@ -1,6 +1,6 @@
-import type { JSX } from "react";
-import { HashRouter, Routes, Route } from "react-router";
-import { Home } from "../pages/Home";
+import type { JSX } from 'react';
+import { HashRouter, Routes, Route } from 'react-router';
+import { Home } from '../pages/Home';
 import '../theme/variables.css';
 
 export default function Router(): JSX.Element {
