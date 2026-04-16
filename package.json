@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "run:android": "npm run build && npx cap sync && npx cap run android",
+    "run:android:dev": "BUILD_ENV=development DEVICE_TYPE=android node ./scripts/build.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
@@ -20,6 +22,7 @@
     "@capacitor/core": "^8.3.0",
     "@capacitor/ios": "^8.3.0",
     "react": "^19.2.4",
+    "react-aria-components": "^1.17.0",
     "react-dom": "^19.2.4",
     "react-router": "^7.14.0"
   },

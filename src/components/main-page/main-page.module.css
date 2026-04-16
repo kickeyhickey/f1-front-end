@@ -1,0 +1,6 @@
+.background {
+  background-size: cover;
+  height: 100vh;
+  overflow: scroll;
+  background-color: var(--bg);
+}
