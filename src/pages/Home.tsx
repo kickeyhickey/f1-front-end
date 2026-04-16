@@ -1,10 +1,13 @@
 import type { JSX } from 'react';
+import MainPage from '../components/main-page/main-page.component';
+import MainTable from '../components/table/main-table.component';
 
 export function Home(): JSX.Element {
   return (
-    <div>
-      <h1>Home</h1>
-      <p>Welcome to the F1 App</p>
-    </div>
+    <MainPage>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <MainTable />
+      </div>
+    </MainPage>
   );
 }

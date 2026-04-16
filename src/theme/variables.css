@@ -24,6 +24,17 @@ http://ionicframework.com/docs/theming/ */
   /* Help Modal Background color */
   --ion-color-helpModalBg: #002c54;
 
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
   /**primary**/
   --ion-color-primary: #4faee0;
   --ion-color-primary-rgb: 79, 174, 224;
@@ -423,9 +434,7 @@ ion-card-subtitle {
   --ion-color-base: var(--ion-color-quickInstallBackground);
   --ion-color-base-rgb: var(--ion-color-quickInstallBackground-rgb);
   --ion-color-contrast: var(--ion-color-quickInstallBackground-contrast);
-  --ion-color-contrast-rgb: var(
-    --ion-color-quickInstallBackground-contrast-rgb
-  );
+  --ion-color-contrast-rgb: var(--ion-color-quickInstallBackground-contrast-rgb);
   --ion-color-shade: var(--ion-color-quickInstallBackground-shade);
   --ion-color-tint: var(--ion-color-quickInstallBackground-tint);
 }
@@ -598,6 +607,5 @@ ion-card-subtitle {
     --ion-color-gray100-contrast-rgb: 0, 0, 0;
     --ion-color-gray100-shade: #d8d9dc;
     --ion-color-gray100-tint: #f6f8fb;
-
   }
 }
