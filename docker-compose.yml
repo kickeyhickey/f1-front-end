@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  workspace:
+    build:
+      context: .
+
+      # Build stack that matches ionic Appflow
+      # https://ionic.io/docs/appflow/build-stacks
+      args:
+        CORDOVA_VERSION: 12.0.0
+        IONIC_VERSION: 7.2.1
+        NODE_VERSION: 20 # Must be an integer
+        DEBIAN_VERSION: 12.9
+        GRADLE_VERSION: 8.14.2
+        JAVA_VERSION: 21 # Must be an integer
+        ANDROID_SDK: 35 # Must be an integer
+        ANDROID_BUILD_TOOLS_VERSION: 35.0.0
+        # https://developer.android.com/studio/#downloads
+        # Look for "commandlinetools-linux-<some build number>_latest.zip"
+        ANDROID_COMMANDLINE_TOOLS: 13114758
+
+    volumes:
+      # Project folder
+      - ./:/f1-app
+
+      # Home dir
+      - home:/root
+
+    ports:
+      # SSH
+      - '2222:22'
+
+      # ADB
+      - '5037:5037'
+
+volumes:
+  home:
