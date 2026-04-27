@@ -53,7 +53,7 @@ export default function MainTable() {
       <TableBody items={rows}>
         {function renderItem(item) {
           return (
-            <Row id={item.id}>
+            <Row id={item.id} className={style.tableRow}>
               <Cell>{item.title}</Cell>
               <Cell>{item.type}</Cell>
               <Cell>{item.date}</Cell>
