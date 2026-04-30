@@ -35,5 +35,12 @@ services:
       # Vite dev server
       - '5174:5174'
 
+    networks:
+      - f1-network
+
+networks:
+  f1-network:
+    external: true
+
 volumes:
   home:
