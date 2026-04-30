@@ -43,7 +43,8 @@
   }
 }
 
-.react-aria-Row {
+
+.tableRow {
   outline: none;
   cursor: default;
   color: var(--text-color);
@@ -52,6 +53,7 @@
   transition-property: background, color;
   transition-duration: 200ms;
   -webkit-tap-highlight-color: transparent;
+  background: var(--highlight-background);
 
   tr:last-child& {
     border-radius: 0 0 var(--radius) var(--radius);

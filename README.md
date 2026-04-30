@@ -1,77 +1,176 @@
-# React + TypeScript + Vite
+# F1 Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript + Vite frontend application for an F1 fantasy league, with Ionic Capacitor support for mobile deployments.
 
-Currently, two official plugins are available:
+## 🏎️ Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This is the frontend interface for the F1 fantasy league application, providing:
 
-## React Compiler
+- User profile management
+- F1 team and driver selection
+- Points tracking and leaderboards
+- Mobile app support via Capacitor (iOS & Android)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Mobile**: Ionic Capacitor (iOS & Android)
+- **API Client**: Axios
+- **Styling**: CSS with Ionic components
+- **Containerization**: Docker (for development environment)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📋 Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [Docker](https://www.docker.com/get-started) and Docker Compose
+- Node.js 20+ (if running locally outside Docker)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Development Architecture
+
+This frontend communicates with a separate **backend API service**. Both services run in Docker containers and share a **Docker network** (`f1-network`) for inter-container communication.
+
+**Why a shared network?**
+
+- Frontend can make API requests directly to the backend using `http://backend:8080` internally
+- Avoids CORS issues during development (handled by Vite proxy)
+- Port mappings (`5000`, `5174`) are still exposed for debugging from your host machine
+- Clean separation of concerns - each service has its own docker-compose.yml
+
+### One-Time Setup: Create Shared Network
+
+**Before starting any containers**, create the shared Docker network once:
+
+```bash
+docker network create f1-network
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> **Note**: This is a one-time setup. The network persists even when containers are stopped, and you only need to create it once per development machine.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Starting the Frontend
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### Full Development Stack
+
+1. **Start the backend** (required for API communication):
+
+   ```bash
+   cd ../f1-backend
+   docker-compose up -d
+   ```
+
+2. **Start the frontend** (from this directory):
+   ```bash
+   docker-compose up -d
+   ```
+
+This will:
+
+- Start the Vite dev server on port `5174` (accessible at `http://localhost:5174`)
+- Enable SSH access on port `2223` for remote development
+- Enable ADB on port `5037` for Android debugging
+- Connect to the `f1-network` to communicate with the backend
+
+### Accessing the Application
+
+Once running:
+
+- **Web App**: <http://localhost:5174> (from your host machine browser)
+- **Backend API Proxy**: Requests to `/local-api/*` are proxied to `http://backend:8080/api/*`
+- **SSH (for VS Code Remote)**: `localhost:2223` (password: `0000`)
+
+### Development Workflow
+
+The recommended workflow for full-stack development:
+
+1. **Start backend** (from `../f1-backend`):
+
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **Start frontend** (from this directory):
+
+   ```bash
+   docker-compose up -d
+   ```
+
+3. **Connect via VS Code Remote-SSH**:
+   - Backend: `root@localhost:2222` (password: `0000`)
+   - Frontend: `root@localhost:2223` (password: `0000`)
+
+4. **Develop in separate VS Code windows**:
+   - Code changes hot-reload automatically via volume mounts
+   - Backend API is accessible via `/local-api` proxy in development
+
+5. **View logs**:
+   ```bash
+   docker-compose logs -f
+   ```
+
+### Stopping the Frontend
+
+```bash
+docker-compose down
 ```
-# f1-front-end
-# f1-front-end
-# f1-front-end
-# f1-front-end
+
+## 🔧 Configuration
+
+### API Endpoints
+
+The frontend uses different API configurations per environment:
+
+- **Development** (`.env.development`): Uses Vite proxy to `http://backend:8080`
+- **Production** (`.env.production`): Direct API URL (e.g., deployed backend URL)
+
+### Environment Variables
+
+- `VITE_API_BASE_URL`: Base URL for external F1 API calls
+- Proxy configuration in `vite.config.ts` handles internal backend communication
+
+## 📱 Mobile Development
+
+The project includes Capacitor for iOS and Android builds:
+
+### Android
+
+```bash
+# Inside the container (via SSH)
+ionic capacitor build android
+```
+
+### iOS
+
+```bash
+# Inside the container (via SSH)
+ionic capacitor build ios
+```
+
+## 🐛 Troubleshooting
+
+### Frontend can't reach backend
+
+**Symptom**: API calls fail with connection errors
+
+**Solution**:
+
+1. Verify the shared network exists: `docker network inspect f1-network`
+2. Ensure both containers are running: `docker ps`
+3. Check both services are on the network: `docker network inspect f1-network`
+4. Restart both containers: `docker-compose down && docker-compose up -d`
+
+### Port conflicts
+
+**Symptom**: Container fails to start due to port already in use
+
+**Solution**: Stop conflicting services or change port mappings in `docker-compose.yml`
+
+## 📚 Additional Resources
+
+- [Vite Documentation](https://vite.dev/)
+- [React Documentation](https://react.dev/)
+- [Ionic Capacitor](https://capacitorjs.com/)
+
+---
+
+**Related Projects**: See `../f1-backend/README.md` for backend setup instructions.
