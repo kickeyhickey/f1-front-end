@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  workspace:
+    volumes:
+      - ./:/f1-app
+      - home:/root
+    
+    ports:
+      - '2223:22'   # SSH
+      - '5037:5037' # ADB
+      - '5174:5174' # Vite dev server
+
+volumes:
+  home:

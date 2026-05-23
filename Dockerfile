@@ -5,18 +5,18 @@ ARG DEBIAN_VERSION=12.9
 FROM debian:${DEBIAN_VERSION}
 
 ARG CORDOVA_VERSION=12.0.0
-ARG IONIC_VERSION=7.2.0
+ARG IONIC_VERSION=7.2.1
 # Must be an integer
 ARG NODE_VERSION=20
-ARG GRADLE_VERSION=8.10.2
+ARG GRADLE_VERSION=8.14.2
 # Must be an integer
-ARG JAVA_VERSION=17
+ARG JAVA_VERSION=21
 # Must be an integer
-ARG ANDROID_SDK=34
+ARG ANDROID_SDK=35
 ARG ANDROID_BUILD_TOOLS_VERSION=35.0.0
 # https://developer.android.com/studio/#downloads
 # Look for "commandlinetools-linux-<some build number>_latest.zip"
-ARG ANDROID_COMMANDLINE_TOOLS=11076708
+ARG ANDROID_COMMANDLINE_TOOLS=13114758
 
 RUN apt-get -q update && \
     export DEBIAN_FRONTEND=noninteractive && \
@@ -152,6 +152,9 @@ RUN echo "export PATH=$PATH:/etc/profile" >> ~/.bashrc
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get autoremove -y && \
     apt-get clean
+
+# Set working directory
+WORKDIR /f1-app
 
 # Copy entrypoint script
 COPY --chmod=755 entrypoint.sh /entrypoint.sh

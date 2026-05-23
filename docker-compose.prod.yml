@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  workspace:
+    # In production, you might only expose the Vite port
+    # and skip SSH/ADB for security
+    ports:
+      - '5174:5174' # Vite dev server
+    
+    # No volume mounts in production
+    # Uses the built image as-is
