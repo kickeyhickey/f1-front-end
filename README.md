@@ -25,6 +25,37 @@ This is the frontend interface for the F1 fantasy league application, providing:
 - [Docker](https://www.docker.com/get-started) and Docker Compose
 - Node.js 20+ (if running locally outside Docker)
 
+## ⚡ Quick Start (First-Time Setup)
+
+If this is your first time setting up the project, follow these steps:
+
+1. **Create the shared Docker network** (one-time only):
+   ```bash
+   docker network create f1-network
+   ```
+   > If you see "network already exists", that's fine - skip to step 2.
+
+2. **Verify network creation**:
+   ```bash
+   docker network ls | grep f1-network
+   ```
+   > You should see `f1-network` in the output.
+
+3. **Start the backend** (from the backend directory):
+   ```bash
+   cd ../f1-backend
+   docker-compose up -d
+   ```
+
+4. **Start the frontend** (from this directory):
+   ```bash
+   docker-compose up -d
+   ```
+
+5. **Access the app**: Open <http://localhost:5174> in your browser
+
+That's it! 🎉 For detailed information, continue reading below.
+
 ## 🚀 Getting Started
 
 ### Development Architecture
@@ -47,6 +78,16 @@ docker network create f1-network
 ```
 
 > **Note**: This is a one-time setup. The network persists even when containers are stopped, and you only need to create it once per development machine.
+
+**Verify the network was created successfully**:
+
+```bash
+docker network ls | grep f1-network
+# or inspect details:
+docker network inspect f1-network
+```
+
+**If you see "network already exists" error**: That's fine! The network is already set up and you can proceed to start the containers.
 
 ### Starting the Frontend
 
