@@ -117,7 +117,8 @@ This will:
 Once running:
 
 - **Web App**: <http://localhost:5174> (from your host machine browser)
-- **Backend API Proxy**: Requests to `/local-api/*` are proxied to `http://backend:8080/api/*`
+- **Backend API**: Requests to `/api/*` are proxied to `http://backend:8080/api/*`
+- **External F1 API**: Requests to `/f1-api/*` are proxied to `https://f1connectapi.vercel.app/*`
 - **SSH (for VS Code Remote)**: `localhost:2223` (password: `0000`)
 
 ### Development Workflow
@@ -142,7 +143,8 @@ The recommended workflow for full-stack development:
 
 4. **Develop in separate VS Code windows**:
    - Code changes hot-reload automatically via volume mounts
-   - Backend API is accessible via `/local-api` proxy in development
+   - Backend API is accessible via `/api` proxy in development
+   - External F1 API is accessible via `/f1-api` proxy in development
 
 5. **View logs**:
    ```bash
@@ -159,15 +161,21 @@ docker-compose down
 
 ### API Endpoints
 
-The frontend uses different API configurations per environment:
+The frontend proxies requests to two different APIs:
 
-- **Development** (`.env.development`): Uses Vite proxy to `http://backend:8080`
-- **Production** (`.env.production`): Direct API URL (e.g., deployed backend URL)
+1. **Your Backend API** (`/api/*`):
+   - **Development**: Proxied via Vite to `http://backend:8080/api/*`
+   - **Production**: Proxied via nginx to your backend service
+
+2. **External F1 Data API** (`/f1-api/*`):
+   - **Development**: Proxied via Vite to `https://f1connectapi.vercel.app/*`
+   - **Production**: Proxied via nginx to external F1 API
 
 ### Environment Variables
 
-- `VITE_API_BASE_URL`: Base URL for external F1 API calls
-- Proxy configuration in `vite.config.ts` handles internal backend communication
+- Proxy configuration in `vite.config.ts` handles all API routing in development
+- In production, nginx handles API proxying
+- No environment-specific API URLs needed - paths work in both dev and prod
 
 ## 📱 Mobile Development
 
