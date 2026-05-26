@@ -9,7 +9,7 @@ services:
     container_name: f1-app-prod
     
     ports:
-      - '5174:80'  # Map host 5174 to nginx port 80
+      - '127.0.0.1:5174:80'  # Bind to localhost only - accessible via nginx only
     
     restart: unless-stopped
     
