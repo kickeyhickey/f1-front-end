@@ -1,14 +1,13 @@
 import axios from 'axios';
 
-// F1 API instance - uses proxy in dev, direct URL in production
+// External F1 API instance - proxied through /f1-api
 const axiosInst = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080',
+  baseURL: '/f1-api',
 });
 
-// Local backend instance - for your database API
-// Uses proxy in dev to avoid CORS
+// Your backend API instance
 export const localApiInst = axios.create({
-  baseURL: '/local-api',
+  baseURL: '/api',
 });
 
 // Optional: Add request/response interceptors for logging or auth
