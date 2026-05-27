@@ -13,11 +13,11 @@ export default defineConfig({
         target: 'http://backend:8080',
         changeOrigin: true,
       },
-      // External F1 data API - strips /f1-api prefix
+      // External F1 data API - rewrites /f1-api to /api
       '/f1-api': {
         target: 'https://f1connectapi.vercel.app',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/f1-api/, ''),
+        rewrite: (path) => path.replace(/^\/f1-api/, '/api'),
       },
     },
   },
