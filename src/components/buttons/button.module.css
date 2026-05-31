@@ -1,0 +1,18 @@
+.login {
+  background-color: var(--f1-flag-blue);
+  font-size: small;
+  width: 300px;
+  height: 45px;
+  border-radius: 8px;
+  border: none;
+}
+
+.register {
+  background-color: var(--f1-color-gray) !important;
+  font-size: small;
+  width: 300px;
+  height: 45px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
