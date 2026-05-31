@@ -6,18 +6,22 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-export const LoginButton = ({ text }: ButtonProps): JSX.Element => {
+export const LoginButton = ({ text, onClick }: ButtonProps): JSX.Element => {
   return (
     <div>
-      <button className={style.login}>{text}</button>
+      <button onClick={onClick} className={style.login}>
+        {text}
+      </button>
     </div>
   );
 };
 
-export const RegisterButton = ({ text }: ButtonProps): JSX.Element => {
+export const RegisterButton = ({ text, onClick }: ButtonProps): JSX.Element => {
   return (
     <div>
-      <button className={style.register}>{text}</button>
+      <button onClick={onClick} className={style.register}>
+        {text}
+      </button>
     </div>
   );
 };
