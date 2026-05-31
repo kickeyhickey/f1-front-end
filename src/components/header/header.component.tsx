@@ -6,12 +6,12 @@ import { BoldTitle } from '../text/text.componets';
 export default function MainHeader() {
   return (
     <div className={style.header}>
-      <button onClick={() => console.warn('CLICK')}>
-        <img src={settingsIcon} />
-      </button>
-      <BoldTitle>F1</BoldTitle>
       <button>
         <img src={hamburgerIcon} />
+      </button>
+      <BoldTitle>F1</BoldTitle>
+      <button onClick={() => console.warn('CLICK')}>
+        <img src={settingsIcon} />
       </button>
     </div>
   );
