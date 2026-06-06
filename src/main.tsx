@@ -4,7 +4,7 @@ import { ClerkProvider } from '@clerk/clerk-react';
 import './index.css';
 import Router from './router/router.tsx';
 import { AuthTokenSync } from './components/auth-token/auth-token-sync.component.tsx';
-import { clerkAppearance } from './theme/clerk.ts';
+import { clerkAppearance } from './theme/clerk.theme.ts';
 
 const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
