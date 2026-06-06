@@ -1,0 +1,15 @@
+.primaryText {
+  color: var(--text);
+  font-size: 14;
+}
+
+.boldText {
+  color: var(--text);
+  font-size: 14;
+  font-weight: 600;
+}
+
+.headerTitle {
+  color: #ffffff;
+  font-weight: 600;
+}
