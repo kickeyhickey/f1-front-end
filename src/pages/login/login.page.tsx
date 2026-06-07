@@ -7,27 +7,26 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function Login() {
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, isLoaded } = useAuth();
   const { openSignIn, openSignUp } = useClerk();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isSignedIn) {
+    if (isSignedIn && isLoaded) {
       navigate('/dashboard');
     }
-  }, [isSignedIn, navigate]);
+  }, [isSignedIn, navigate, isLoaded]);
 
   const handleSignIn = () => {
     openSignIn({
-      afterSignInUrl: '/dashboard',
-      redirectUrl: '/dashboard',
+      // Tell Clerk to return to the root path where your SPA can safely boot up
+      fallbackRedirectUrl: '/',
     });
   };
 
   const handleSignUp = () => {
     openSignUp({
-      afterSignUpUrl: '/dashboard',
-      redirectUrl: '/dashboard',
+      fallbackRedirectUrl: '/',
     });
   };
 
