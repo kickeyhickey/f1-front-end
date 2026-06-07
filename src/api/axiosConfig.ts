@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+let authToken: string | null = null;
+
+export const setAuthToken = (token: string | null) => {
+  authToken = token;
+};
+
 // External F1 API instance - proxied through /f1-api
 const axiosInst = axios.create({
   baseURL: '/f1-api',
@@ -31,22 +37,16 @@ axiosInst.interceptors.response.use(
   }
 );
 
+// clerk token added
 localApiInst.interceptors.request.use(
   (config) => {
-    // You can add auth tokens here for local API
+    if (authToken) {
+      config.headers.Authorization = `Bearer ${authToken}`;
+    }
+
     return config;
   },
   (error) => {
-    return Promise.reject(error);
-  }
-);
-
-localApiInst.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    // Handle errors globally for local API
     return Promise.reject(error);
   }
 );

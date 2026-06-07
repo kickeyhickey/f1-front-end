@@ -1,11 +1,11 @@
-import { useEffect, useState, type JSX } from 'react';
+import { useState, useEffect } from 'react';
 import MainPage from '../../components/main-page/main-page.component';
 import MainTable from '../../components/table/main-table.component';
-import { getDrivers, getUsers } from './api/home.api';
+import { getDrivers, getUsers } from '../../utilities/utilities';
 
-export function Home(): JSX.Element {
-  const [drivers, setDrivers] = useState<any[]>([]);
-  const [users, setUsers] = useState<any[]>([]);
+export const DashboardPage = () => {
+  const [drivers, setDrivers] = useState<unknown[]>([]);
+  const [users, setUsers] = useState<unknown[]>([]);
 
   useEffect(() => {
     let isMounted = true;
@@ -42,7 +42,6 @@ export function Home(): JSX.Element {
 
   console.warn('drivers', drivers);
   console.warn('users', users);
-
   return (
     <MainPage>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -50,4 +49,4 @@ export function Home(): JSX.Element {
       </div>
     </MainPage>
   );
-}
+};
