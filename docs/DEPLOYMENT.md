@@ -2,6 +2,25 @@
 
 Complete guide for deploying the F1 Frontend to a DigitalOcean Droplet.
 
+## ⚡ Quick Start (TL;DR)
+
+**On your server:**
+
+```bash
+cd /opt/f1-frontend
+cp .env.production.example .env.production
+nano .env.production  # Add your real Clerk key from dashboard.clerk.com
+docker-compose -f docker-compose.prod.yml up -d --build
+```
+
+**Must have before deploying:**
+
+- ✅ `.env.production` file with your real `VITE_CLERK_PUBLISHABLE_KEY`
+- ✅ Backend running (`docker ps | grep backend`)
+- ✅ Docker network created (`docker network create f1-network`)
+
+---
+
 ## 📋 Prerequisites
 
 Before deploying, ensure your DigitalOcean droplet has:
@@ -109,17 +128,32 @@ docker ps | grep backend
 
 ### 6. Initial Deployment
 
-**IMPORTANT**: Make sure `.env.production` exists and contains `VITE_CLERK_PUBLISHABLE_KEY` before running this command!
-
-Build and start the production container:
+**CRITICAL**: Make sure `.env.production` exists with your Clerk key **BEFORE** building!
 
 ```bash
 cd /opt/f1-frontend
 
-# Verify environment file exists
-ls -la .env.production
+# Step 1: Create .env.production if it doesn't exist
+if [ ! -f .env.production ]; then
+    echo "Creating .env.production from example..."
+    cp .env.production.example .env.production
+    echo "⚠️  IMPORTANT: Edit .env.production and add your real Clerk key!"
+    echo "Run: nano .env.production"
+    exit 1
+fi
 
-# Build with environment variables
+# Step 2: Verify the Clerk key is set (not the example value)
+if grep -q "pk_live_your_publishable_key_here" .env.production; then
+    echo "❌ ERROR: You still have the example key in .env.production"
+    echo "Edit the file and add your real Clerk key from https://dashboard.clerk.com"
+    echo "Run: nano .env.production"
+    exit 1
+fi
+
+# Step 3: Show what key will be used (first few characters only)
+echo "Using Clerk key: $(grep VITE_CLERK_PUBLISHABLE_KEY .env.production | cut -d'=' -f2 | cut -c1-20)..."
+
+# Step 4: Build with environment variables
 docker-compose -f docker-compose.prod.yml up -d --build
 ```
 
@@ -201,6 +235,21 @@ Add this content:
 set -e
 
 echo "🚀 Starting F1 Frontend Deployment..."
+
+# Check if .env.production exists
+if [ ! -f .env.production ]; then
+    echo "❌ ERROR: .env.production not found!"
+    echo "Create it from the example: cp .env.production.example .env.production"
+    echo "Then add your real Clerk key from https://dashboard.clerk.com"
+    exit 1
+fi
+
+# Check if still using example key
+if grep -q "pk_live_your_publishable_key_here" .env.production; then
+    echo "❌ ERROR: You're still using the example Clerk key!"
+    echo "Edit .env.production and add your real key from https://dashboard.clerk.com"
+    exit 1
+fi
 
 # Pull latest code
 echo "📥 Pulling latest code..."
