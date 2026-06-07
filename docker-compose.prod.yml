@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   workspace:
-    env_file:
-      - .env.production # Load environment variables from this file
-
+    # Docker Compose automatically loads .env file from the same directory
+    # No need to specify env_file - just create .env in the project root
+    
     build:
       context: .
       dockerfile: Dockerfile.prod
