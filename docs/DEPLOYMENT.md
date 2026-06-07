@@ -8,16 +8,18 @@ Complete guide for deploying the F1 Frontend to a DigitalOcean Droplet.
 
 ```bash
 cd /opt/f1-frontend
-cp .env.production.example .env.production
-nano .env.production  # Add your real Clerk key from dashboard.clerk.com
+cp .env.production.example .env  # Use .env (NOT .env.production)
+nano .env  # Add your real Clerk key from dashboard.clerk.com
 docker-compose -f docker-compose.prod.yml up -d --build
 ```
 
 **Must have before deploying:**
 
-- ✅ `.env.production` file with your real `VITE_CLERK_PUBLISHABLE_KEY`
+- ✅ `.env` file in project root with your real `VITE_CLERK_PUBLISHABLE_KEY`
 - ✅ Backend running (`docker ps | grep backend`)
 - ✅ Docker network created (`docker network create f1-network`)
+
+**Important:** Docker Compose automatically loads `.env` (not `.env.production`).
 
 ---
 
