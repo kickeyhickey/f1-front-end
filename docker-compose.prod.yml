@@ -1,18 +1,27 @@
-version: "3.8"
+version: '3.8'
 
 services:
   workspace:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    
+      args:
+        # Pass environment variables as build arguments
+        # These MUST be set before building
+        VITE_CLERK_PUBLISHABLE_KEY: ${VITE_CLERK_PUBLISHABLE_KEY}
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-/api}
+        VITE_CLERK_SIGN_IN_URL: ${VITE_CLERK_SIGN_IN_URL:-/sign-in}
+        VITE_CLERK_SIGN_UP_URL: ${VITE_CLERK_SIGN_UP_URL:-/sign-up}
+        VITE_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL: ${VITE_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL:-/}
+        VITE_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL: ${VITE_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL:-/}
+
     container_name: f1-app-prod
-    
+
     ports:
-      - '127.0.0.1:5174:80'  # Bind to localhost only - accessible via nginx only
-    
+      - '127.0.0.1:5174:80' # Bind to localhost only - accessible via nginx only
+
     restart: unless-stopped
-    
+
     networks:
       - f1-network
 
