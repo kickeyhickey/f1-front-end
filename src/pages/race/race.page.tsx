@@ -1,3 +1,9 @@
+import MainPage from '../../components/main-page/main-page.component';
+
 export const RacePage = () => {
-  return <div>RacePage</div>;
+  return (
+    <MainPage>
+      <div>racepage</div>
+    </MainPage>
+  );
 };

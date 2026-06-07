@@ -13,21 +13,21 @@ export default function Login() {
 
   useEffect(() => {
     if (isSignedIn) {
-      navigate('/home');
+      navigate('/dashboard');
     }
   }, [isSignedIn, navigate]);
 
   const handleSignIn = () => {
     openSignIn({
-      afterSignInUrl: '/home',
-      redirectUrl: '/home',
+      afterSignInUrl: '/dashboard',
+      redirectUrl: '/dashboard',
     });
   };
 
   const handleSignUp = () => {
     openSignUp({
-      afterSignUpUrl: '/home',
-      redirectUrl: '/home',
+      afterSignUpUrl: '/dashboard',
+      redirectUrl: '/dashboard',
     });
   };
 

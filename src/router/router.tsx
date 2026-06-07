@@ -1,6 +1,5 @@
 import type { JSX } from 'react';
 import { HashRouter, Routes, Route } from 'react-router';
-import { Home } from '../pages/home/Home';
 import '../theme/variables.css';
 import Login from '../pages/login/login.page';
 import { UserPage } from '../pages/user/user.page';
@@ -16,7 +15,6 @@ export default function Router(): JSX.Element {
         <Route path="/" element={<Login />} />
 
         <Route element={<ProtectedRoutes />}>
-          <Route path="/home" element={<Home />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/race" element={<RacePage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
