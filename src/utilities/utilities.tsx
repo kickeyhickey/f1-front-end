@@ -3,7 +3,6 @@ import axiosInst, { localApiInst } from '../api/axiosConfig';
 export const getCurrentUser = async () => {
   try {
     const response = await localApiInst.get('/current-user');
-    console.warn('response', response);
 
     return response.data;
   } catch (error: unknown) {
@@ -15,7 +14,6 @@ export const getDrivers = async () => {
   try {
     const response = await axiosInst.get('/drivers?limit=1&offset=20');
 
-    console.warn('response', response.data);
     return await response.data.drivers;
   } catch (error: unknown) {
     console.warn('error', error);
@@ -26,7 +24,6 @@ export const getUsers = async () => {
   try {
     const response = await localApiInst.get('/users');
 
-    console.warn('users response', response.data);
     return response.data;
   } catch (error: unknown) {
     console.error('error fetching users:', error);

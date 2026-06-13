@@ -4,44 +4,31 @@ import MainTable from '../../components/table/main-table.component';
 import { getDrivers, getUsers } from '../../utilities/utilities';
 
 export const DashboardPage = () => {
-  const [drivers, setDrivers] = useState<unknown[]>([]);
-  const [users, setUsers] = useState<unknown[]>([]);
+  const [pageData, setPageData] = useState({ drivers: [], users: [] });
 
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchDrivers = async () => {
+    // Define it directly inside the effect
+    const getPageData = async () => {
       try {
-        const data = await getDrivers();
-        if (isMounted && data) {
-          setDrivers(data);
-        }
+        const driversData = await getDrivers();
+        const usersData = await getUsers();
+
+        setPageData({
+          drivers: driversData,
+          users: usersData,
+        });
       } catch (error) {
-        console.error('Error fetching drivers:', error);
+        console.error('Failed to fetch page data:', error);
       }
     };
 
-    const fetchUsers = async () => {
-      try {
-        const data = await getUsers();
-        if (isMounted && data) {
-          setUsers(data);
-        }
-      } catch (error) {
-        console.error('Error fetching drivers:', error);
-      }
-    };
-
-    fetchDrivers();
-    fetchUsers();
-
-    return () => {
-      isMounted = false;
-    };
+    void getPageData();
   }, []);
 
-  console.warn('drivers', drivers);
+  const { users, drivers } = pageData;
+
   console.warn('users', users);
+
   return (
     <MainPage>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

@@ -35,6 +35,7 @@ export default defineConfig([
       ],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'off', // 🟢 Turns the rule completely off
 
       // React specific rules
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
