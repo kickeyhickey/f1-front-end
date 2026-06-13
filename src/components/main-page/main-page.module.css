@@ -1,6 +1,11 @@
-.background {
+.container {
   background-size: cover;
   height: 100vh;
   overflow: scroll;
   background-color: var(--bg);
+}
+
+.body {
+  height: 70%;
+  padding: 16px;
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import MainPage from '../../components/main-page/main-page.component';
 import MainTable from '../../components/table/main-table.component';
 import { getDrivers, getUsers } from '../../utilities/utilities';
+import { headerTitles } from './dashboard.configs';
 
 export const DashboardPage = () => {
   const [pageData, setPageData] = useState({ drivers: [], users: [] });
@@ -32,7 +33,7 @@ export const DashboardPage = () => {
   return (
     <MainPage>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <MainTable data={drivers} />
+        <MainTable headerTitles={headerTitles} data={drivers} />
       </div>
     </MainPage>
   );

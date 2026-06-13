@@ -5,10 +5,10 @@ import { TabNavigation } from '../tab-navigation/tabs.component';
 
 export default function MainPage({ children }: { children: React.ReactNode }) {
   return (
-    <div className={style.background}>
+    <div className={style.container}>
       <MainHeader />
       <TabNavigation />
-      <div style={{ height: '70%' }}>{children}</div>
+      <div className={style.body}>{children}</div>
     </div>
   );
 }
