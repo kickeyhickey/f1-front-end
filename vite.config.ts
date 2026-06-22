@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
+    allowedHosts: true,
     port: 5174,
     proxy: {
       // Your backend API - preserves /api path
