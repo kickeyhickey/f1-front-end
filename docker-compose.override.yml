@@ -5,7 +5,7 @@ services:
     volumes:
       - ./:/f1-app
       - home:/root
-      - ${SSH_AUTH_SOCK:-/dev/null}:/ssh-agent
+      - /tmp/ssh-agent.sock:/ssh-agent
     ports:
       - '2223:22'   # SSH
       - '5037:5037' # ADB

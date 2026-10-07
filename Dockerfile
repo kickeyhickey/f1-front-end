@@ -26,7 +26,8 @@ RUN apt-get -q update && \
 RUN apt-get install -qq \
     curl \
     unzip \
-    wget
+    wget \
+    bash-completion
 
 ################################################################################
 # NodeJS
@@ -118,8 +119,6 @@ RUN apt-get update && apt-get install -y fonts-liberation && \
     rm google-chrome-stable_current_amd64.deb
 
 ################################################################################
-# SSH
-################################################################################
 # SSH & Git
 ################################################################################
 RUN apt-get update && apt-get install -qq openssh-server openssh-client git && \
@@ -127,22 +126,13 @@ RUN apt-get update && apt-get install -qq openssh-server openssh-client git && \
     echo "root:0000" | chpasswd && \
     # Make the `.ssh` dir so we can write to it later.
     mkdir -p /root/.ssh && \
-    rm -rf /var/lib/apt/lists/*
-
-################################################################################
-# Git
-################################################################################
-RUN apt-get install -qq git && \
-    # Enable git completion
-    echo "source /usr/share/bash-completion/completions/git" >> ~/.bashrc && \
-    # Manually create the config file for Git.
-    # This file is able to be used in a volume unlike the default location.
-    # mkdir -p ~/.config/git && \
-    touch ~/.gitconfig && \
+    # Enable bash completion profile loading
+    echo "if [ -f /etc/bash_completion ]; then . /etc/bash_completion; fi" >> /root/.bashrc && \
+    touch /root/.gitconfig && \
     # Fix: Git error: "detected dubious ownership"
     git config --system --add safe.directory '*' && \
     # Fix: The authenticity of host 'github.com (140.82.113.4)' can't be established.
-    ssh-keyscan github.com >> ~/.ssh/known_hosts
+    ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 ################################################################################
 # Housekeeping
@@ -167,4 +157,3 @@ COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
-
