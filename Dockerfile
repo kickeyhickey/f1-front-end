@@ -148,6 +148,7 @@ RUN apt-get install -qq git && \
 # Housekeeping
 ################################################################################
 
+# keep ssh var persistant
 RUN echo 'export SSH_AUTH_SOCK=/ssh-agent' >> /root/.bashrc
 
 # Update non-login terminal's path
