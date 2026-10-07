@@ -12,7 +12,6 @@ services:
         ANDROID_SDK: ${ANDROID_SDK:-35}
         ANDROID_BUILD_TOOLS_VERSION: ${ANDROID_BUILD_TOOLS_VERSION:-35.0.0}
         ANDROID_COMMANDLINE_TOOLS: ${ANDROID_COMMANDLINE_TOOLS:-13114758}
-    
     container_name: f1-app
     networks:
       - f1-network

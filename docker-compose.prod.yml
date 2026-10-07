@@ -1,10 +1,7 @@
-version: '3.8'
-
 services:
   workspace:
     # Docker Compose automatically loads .env file from the same directory
     # No need to specify env_file - just create .env in the project root
-    
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -17,14 +14,10 @@ services:
         VITE_CLERK_SIGN_UP_URL: ${VITE_CLERK_SIGN_UP_URL:-/sign-up}
         VITE_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL: ${VITE_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL:-/}
         VITE_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL: ${VITE_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL:-/}
-
     container_name: f1-app-prod
-
     ports:
       - '127.0.0.1:5174:80' # Bind to localhost only - accessible via nginx only
-
-    restart: unless-stopped
-
+    restart: always
     networks:
       - f1-network
 

@@ -120,11 +120,14 @@ RUN apt-get update && apt-get install -y fonts-liberation && \
 ################################################################################
 # SSH
 ################################################################################
-RUN apt-get update && apt-get install -qq openssh-server && \
+# SSH & Git
+################################################################################
+RUN apt-get update && apt-get install -qq openssh-server openssh-client git && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     echo "root:0000" | chpasswd && \
     # Make the `.ssh` dir so we can write to it later.
-    mkdir -p /root/.ssh
+    mkdir -p /root/.ssh && \
+    rm -rf /var/lib/apt/lists/*
 
 ################################################################################
 # Git
@@ -161,3 +164,8 @@ COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
+
+####################################################################################
+# open SSH
+# If based on Debian 12 (as set in your build args):
+RUN apt-get update && apt-get install -y openssh-client git && rm -rf /var/lib/apt/lists/*
