@@ -148,6 +148,8 @@ RUN apt-get install -qq git && \
 # Housekeeping
 ################################################################################
 
+RUN echo 'export SSH_AUTH_SOCK=/ssh-agent' >> /root/.bashrc
+
 # Update non-login terminal's path
 RUN echo "export PATH=$PATH:/etc/profile" >> ~/.bashrc
 
@@ -165,7 +167,3 @@ COPY --chmod=755 entrypoint.sh /entrypoint.sh
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
 
-####################################################################################
-# open SSH
-# If based on Debian 12 (as set in your build args):
-RUN apt-get update && apt-get install -y openssh-client git && rm -rf /var/lib/apt/lists/*
